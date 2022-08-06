@@ -7,18 +7,23 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   const player = "You";
   const computer = "Computer";
-  const winOrLose = ["wins", "loses"];
 
   if (playerSelection == computerSelection) {
-    return "Tie";
-  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    return "It's a tie";
+  } else if (
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "paper" && computerSelection == "rock") ||
+    (playerSelection == "scissors" && computerSelection == "paper")
+  ) {
     winningPlayer = player;
-    winningWeapon = "Rock";
-    losingWeapon = "Scissors";
+    winningWeapon = playerSelection;
+    losingWeapon = computerSelection;
+  } else {
+    winningPlayer = computer;
+    winningWeapon = computerSelection;
+    losingWeapon = playerSelection;
   }
-  console.log(
-    `${winningPlayer} ${winOrLose}! ${winningWeapon} beats ${losingWeapon}`
-  );
+  return `${winningPlayer} win! ${winningWeapon} beats ${losingWeapon}`;
 }
 
 const playerSelection = prompt().toLowerCase();
@@ -26,3 +31,7 @@ console.log(playerSelection);
 
 const computerSelection = getComputerChoice();
 console.log(computerSelection);
+
+playRound(playerSelection, computerSelection);
+
+function game() {}

@@ -26,12 +26,12 @@ function playRound(playerSelection, computerSelection) {
   return `${winningPlayer} win! ${winningWeapon} beats ${losingWeapon}`;
 }
 
-const playerSelection = prompt().toLowerCase();
-console.log(playerSelection);
+function game() {
+  for (let i = 0; i < 5; i++) {
+    const computerSelection = getComputerChoice();
+    const playerSelection = prompt().toLowerCase();
+    console.log(playRound(playerSelection, computerSelection));
+  }
+}
 
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
-
-playRound(playerSelection, computerSelection);
-
-function game() {}
+game();
